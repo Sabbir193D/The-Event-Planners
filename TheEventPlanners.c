@@ -1,17 +1,88 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include <string.h>
 
  struct EventRegistration{
     char AttendeeName[50];
     char AttendeeAddress[50];
     char Contact[50];
  }e;
-   struct Catering{
-       char Menu[50];
-       char Quantity[50];
-}d;
+
+   struct MenuItem {
+    char name[50];
+    float quantity;
+};
+
+void CateringOrder();
+void CateringList();
+
+void CateringOrder() {
+    FILE *cateringFile;
+    cateringFile = fopen("CateringMenu.txt", "ab");
+
+    struct MenuItem cateringItem;
+
+    printf("Enter Catering Item Name: ");
+    fflush(stdin);
+    gets(cateringItem.name);
+
+    printf("Enter Catering Item Quantity: ");
+    scanf("%f", &cateringItem.quantity);
+
+    printf("\nCatering Item Added Successfully");
+
+    fwrite(&cateringItem, sizeof(cateringItem), 1, cateringFile);
+    fclose(cateringFile);
+}
+
+void CateringList() {
+    system("cls");
+    printf("<== Catering Menu ==>\n\n");
+    printf("%-30s %-10s\n", "Item Name", "Quantity");
+    printf("---------------------------------------\n");
+
+    FILE *cateringFile;
+    cateringFile = fopen("CateringMenu.txt", "rb");
+
+    struct MenuItem cateringItem;
+
+    while (fread(&cateringItem, sizeof(cateringItem), 1, cateringFile) == 1) {
+        printf("%-30s %.1f\n", cateringItem.name, cateringItem.quantity);
+    }
+
+    fclose(cateringFile);
+}
+
+void ContactInfo();
+void LeaveFeedback();
+
+void ContactInfo() {
+    printf("\nContact Information:\n");
+    printf("Email: event@example.com\n");
+    printf("Phone: +1234567890\n");
+}
+
+void LeaveFeedback() {
+    FILE *feedbackFile;
+    feedbackFile = fopen("Feedback.txt", "a");
+
+    char feedback[200];
+    printf("\nEnter your feedback (max 200 characters):\n");
+    fflush(stdin);
+    gets(feedback);
+
+    fprintf(feedbackFile, "%s\n", feedback);
+
+    printf("Thank you for your feedback!\n");
+
+    fclose(feedbackFile);
+}
+
+
     FILE *fp;
+
+
      void WelcomeScreen()
 {
     printf("\n\n\n\n\n\t\t\t\t*****************************************");
@@ -22,25 +93,23 @@
     getch();
     system("cls");
 }
+  int main(){
+      WelcomeScreen();
+     int ch;
 
-void Headline()
-{
+   while(1){
+    system("cls");
     printf("\n\n\t\t\t-------------------------------------------------------------------------------");
     printf("\n\t\t\t|                              THE EVENT PLANNERS                             |");
     printf("\n\t\t\t-------------------------------------------------------------------------------");
-}
-int main(){
-      WelcomeScreen();
-      Headline();
-     int ch;
-
-  while(1){
-    system("cls");
-    printf("<== THE EVENT PLANNERS ==>\n");
-    printf("1.Event Registration\n");
-    printf("2.Attendees list\n");
-    printf("3.Catering\n");
-    printf("4.MenuList\n");
+    printf("\n\nPlan Your Own Event -->\n");
+    printf("                                                    1.Attendee Registration\n");
+    printf("                                                    2.Attendees list\n");
+    printf("                                                    3.CateringOrder\n");
+    printf("                                                    4.CateringList\n");
+    printf("                                                    5.Contact\n ");
+    printf("                                                   6.Feedback\n");
+    printf("                                                    7.Exit\n");
 
     printf("\nEnter your option number: ");
     scanf("%d",&ch);
@@ -48,26 +117,34 @@ int main(){
     switch(ch){
      case 1:
         EventRegistration();
-        break;
+         break;
      case 2:
         AttendeesList();
-        break;
-     case 3:
-        Catering();
-        break;
-     case 4:
-        MenuList();
-        break;
-
-     default:
+         break;
+    case 3:
+            CateringOrder();
+            break;
+        case 4:
+            CateringList();
+            break;
+        case 5:
+            ContactInfo();
+            break;
+        case 6:
+            LeaveFeedback();
+            break;
+        case 7:
+            printf("Exiting the program. Goodbye!\n");
+                exit(0);
+       default:
         printf("Error! Invalid choice...\n\n");
     }
      printf("\n\nPlan your own Event...");
      getch();
   }
+
   return 0;
 }
-
 void EventRegistration(){
     fp = fopen("EventRegistration.txt", "ab");
 
@@ -103,4 +180,4 @@ void AttendeesList(){
 
     fclose(fp);
 }
-     
+
