@@ -10,7 +10,7 @@ Dashboard
 
 Options for select.
 
-![Options](https://github.com/Sabbir193D/The-Event-Planners/assets/137142428/67373cf3-3edc-4c74-b198-e29a5118c7ae)
+![Screenshot 2023-08-04 192650](https://github.com/Sabbir193D/The-Event-Planners/assets/137142428/65592491-f913-4338-9437-0e9ccf85d1fd)
 
 Event Regestration
 
@@ -20,3 +20,18 @@ List of Attendee.
 
 ![Attendee list](https://github.com/Sabbir193D/The-Event-Planners/assets/137142428/67708a32-4e20-4bc9-805f-228d1cfe17c8)
 
+Catering Order.
+
+![image](https://github.com/Sabbir193D/The-Event-Planners/assets/137142428/2e5fed12-ee47-4e6a-9eef-fd778e59c246)
+
+Catering List.
+
+![image](https://github.com/Sabbir193D/The-Event-Planners/assets/137142428/6dc7a63e-ed56-4e0b-8f4e-700159747da1)
+
+Contact.
+
+![image](https://github.com/Sabbir193D/The-Event-Planners/assets/137142428/9bc070a7-b23a-47bb-a2aa-3a0bb56b992c)
+
+Feedback.
+
+![image](https://github.com/Sabbir193D/The-Event-Planners/assets/137142428/5269adab-c2f8-47e2-857b-49c13454f795)
